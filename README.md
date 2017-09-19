@@ -6,4 +6,4 @@ The data contains four columns. The first column is the person identifier. The s
 
 Each row is considered a floor access event. Your task it to output each floor access event in json format. Each event should comply with the schema located in **schema.json**.
 
-You may use any programming language. Good luck!
+You may use any programming language. When finished, upload code to your Github account and send us the link. Please include instructions on how to execute and test code. Good luck!
