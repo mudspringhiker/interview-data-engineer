@@ -25,7 +25,7 @@ def get_json_from_csv(csvfile, outputfile):
                     "floor_level": int(row[2]),
                     "building": row[3]
                 },
-                "required": [row[0], row[1].replace(' ', '-'), int(row[2]), row[3]]
+                "required": ["person_id", "datetime", "floor_level", "building"]
             }
             json.dump(line, jsonfile)
             jsonfile.write('\n')
