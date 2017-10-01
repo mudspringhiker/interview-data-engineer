@@ -1,6 +1,5 @@
 import csv
 import json
-from schema import schema
 
 
 def main():
@@ -10,18 +9,22 @@ def main():
     print("Conversion complete.")
 
 
-def convert_to_json(csvfile, outputjson, schema=schema):
+def convert_to_json(csvfile, outputjson):
     with open(csvfile) as f:
         reader = csv.DictReader(f)
         
         with open(outputjson, 'w') as jsonfile:
             for row in reader:
-                schema['properties'] = {
-                    'building': row['Building'],
-                    'datetime': row['Floor Access DateTime'].replace(' ', '-'),
-                    'floor_level': int(row['Floor Level']),
-                    'person_id': row['Person Id']}
-                json.dump(schema, jsonfile)
+                line = {}
+                line['building'] = row['Building']
+                line['datetime'] = row['Floor Access DateTime'].replace(' ', '-')
+                try:
+                    line['floor_level'] = int(row['Floor Level'])
+                except ValueError:
+                    line['floor_level'] = row['Floor Level']
+                line['person_id'] = row['Person Id']
+                
+                json.dump(line, jsonfile)
                 jsonfile.write('\n')
 
 
