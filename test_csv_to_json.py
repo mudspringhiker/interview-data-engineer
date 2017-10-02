@@ -6,7 +6,8 @@ class JsonTestCase(unittest.TestCase):
 	"""Tests for csv_to_json.py."""
 
 	def test_json_format(self):
-		"""Is the json formatting correct?"""
+		"""Is the json formatting correct and that 
+		the values are filled as required in schema?"""
 		json_list = convert_to_json('data_test1.csv')
 		expected_list = [
 				{
@@ -32,7 +33,8 @@ class JsonTestCase(unittest.TestCase):
 
 
 	def test_floor_level(self):
-		"""Is floor level properly converted?"""
+		"""Is floor level properly converted and 
+		have a value if missing in original file?"""
 		json_list = convert_to_json('data_test2.csv')
 		expected_list = [
 				{
@@ -46,7 +48,8 @@ class JsonTestCase(unittest.TestCase):
 
 
 	def test_datetime_format(self):
-		"""Is datetime format properly converted?"""
+		"""Is datetime format properly converted and
+		have a value if missing in original file?"""
 		json_list = convert_to_json('data_test3.csv')
 		expected_list = [
 				{
