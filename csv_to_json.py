@@ -17,7 +17,8 @@ def convert_to_json(csvfile):
         json_list = []
         for row in reader:
 
-            # json formatting making sure that keys have values if missing in csv file
+            # json formatting making sure that keys have values (randomly given a 
+            # value of string '99999') if missing in csv file
             line = {}
             if row['Building']:
                 line['building'] = row['Building']
@@ -29,6 +30,7 @@ def convert_to_json(csvfile):
                 line['person_id'] = '99999'
             
             # converting the format of datetime to "date-time" and making sure the type is string
+            # and have values (randomly assigned) if data is missing in original csv file
             try:
                 line['datetime'] = str((datetime.datetime.strptime(row['Floor Access DateTime'], \
                          "%m/%d/%y %H:%M")).strftime("%m/%d/%y-%H:%M"))
