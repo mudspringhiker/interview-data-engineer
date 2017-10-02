@@ -16,5 +16,5 @@ The main program (in Python 3) is [`csv_to_json.py`](csv_to_json.py). Run code b
 ![](test_result.png)
 
 
-Below is what `output.json` should look like:
+Below is what `output.json` would look like:
 ![](output.png)
