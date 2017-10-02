@@ -11,5 +11,6 @@ You may use any programming language. When finished, upload code to your Github 
 
 # Instructions to Excecute and Test Code
 
-The main program is `csv_to_json.py`. Run code by executing `python csv_to_json.py`. Result is saved in file named `output.json`. To test code, run `python test_csv_to_json.py` which requires data files `data_test1.csv`, `data_test2.csv`, and `data_test3.csv`.
+The main program is `csv_to_json.py`. Run code by executing `python csv_to_json.py`. Result is saved in file named `output.json`. To test code, run `python test_csv_to_json.py` which requires data files `data_test1.csv`, `data_test2.csv`, and `data_test3.csv`. Below is the result of the test.
 
+![](test_result.png)
