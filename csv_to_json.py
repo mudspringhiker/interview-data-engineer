@@ -1,3 +1,9 @@
+"""
+Main program for the project assignment from 
+https://github.com/haystax-technology/interview-data-engineer.
+"""
+
+
 import csv
 import json
 import datetime
