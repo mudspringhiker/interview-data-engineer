@@ -10,46 +10,51 @@ import datetime
 
 
 def main():
-    csvfile = 'data.csv'
-    outputfile = 'output.json'
-    save_json(convert_to_json(csvfile), outputfile)
-    print("Conversion complete.")
+    csvfile = input("Name of file: ")
+    try:
+        data = convert_to_json(csvfile)
+    except FileNotFoundError:
+        print("File not found. Try again.")
+    else:
+        save_json(data, "output.json")
+        print("Conversion complete. Output saved in 'output.json'.")
 
 
 def convert_to_json(csvfile):
     """Convert data from a csv file to a list of dictionaries according to schema.json."""
     with open(csvfile) as f:
-        reader = csv.DictReader(f)
-        json_list = []
-        for row in reader:
+            reader = csv.DictReader(f)
+            data = list(reader)
 
-            # json formatting making sure that keys have values (randomly given a 
-            # value of string '99999') if missing in csv file
-            line = {}
-            if row['Building']:
-                line['building'] = row['Building']
-            else:
-                line['building'] = '99999'
-            if row['Person Id']: 
-                line['person_id'] = row['Person Id']
-            else:
-                line['person_id'] = '99999'
-            
-            # converting the format of datetime to "date-time" and making sure the type is string
-            # and have values (randomly assigned) if data is missing in original csv file
-            try:
-                line['datetime'] = str((datetime.datetime.strptime(row['Floor Access DateTime'], \
-                         "%m/%d/%y %H:%M")).strftime("%m/%d/%y-%H:%M"))
-            except ValueError:
-                line['datetime'] = '99999'
-            
-            # converting the value of 'floor_level' key to int
-            try:
-                line['floor_level'] = int(row['Floor Level'])
-            except ValueError:
-                line['floor_level'] = 0
+    key_map = {
+                'building': 'Building',
+                'person_id': 'Person Id',
+                'datetime': 'Floor Access DateTime',
+                'floor_level': 'Floor Level' 
+    }
 
-            json_list.append(line)
+    json_list = []
+    counter = 0
+    for row in data:
+        counter += 1
+        line = {}
+        for key in key_map:
+            try:
+                if key == "floor_level":
+                    line[key] = int(row[key_map[key]])
+                elif key == "datetime":
+                    line[key] = str((datetime.datetime.strptime(row[key_map[key]], \
+                        "%m/%d/%y %H:%M")).strftime("%m/%d/%y-%H:%M"))
+                else:
+                    line[key] = row[key_map[key]]
+            except KeyError:
+                print("Column does not exist.")
+                
+            except ValueError:
+                print("Missing value at row {}.".format(counter))
+                
+        json_list.append(line)
+
     return json_list
 
 
