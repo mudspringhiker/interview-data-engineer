@@ -51,7 +51,7 @@ def convert_to_json(csvfile):
                 print("Column does not exist.")
                 
             except ValueError:
-                print("Missing value at row {}.".format(counter))
+                print("Missing value or datatype error at row {}.".format(counter))
                 
         json_list.append(line)
 
