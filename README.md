@@ -18,3 +18,7 @@ The main program (in Python 3) is [`csv_to_json.py`](csv_to_json.py). Run code b
 
 Below is what `output.json` would look like:
 ![](output.png)
+
+Update:
+
+Validation using `jsonschema` was added. This requires `output.json` and the `jsonschema` module installed. See [`requirements.txt`](requirements.txt).
