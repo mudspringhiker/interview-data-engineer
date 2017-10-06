@@ -21,4 +21,4 @@ Below is what `output.json` would look like:
 
 Update:
 
-[Validation](json_validation.py) using `jsonschema` was. This requires `output.json` and the `jsonschema` module installed. See [`requirements.txt`](requirements.txt).
+[Validation](json_validation.py) using `jsonschema` was created. This requires `output.json` and the `jsonschema` module installed. See [`requirements.txt`](requirements.txt).
